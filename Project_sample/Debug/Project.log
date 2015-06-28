@@ -1,0 +1,11 @@
+﻿Build started 6/25/2015 4:05:17 PM.
+     1>Project "E:\OSU\CS-271\Project_sample\Project.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         E:\Visual Studio\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\OSU\CS-271\Project_sample\Debug\Project.exe" /NOLOGO /LIBPATH:c:\Irvine user32.lib irvine32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\OSU\CS-271\Project_sample\Debug\Project.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE:NO /IMPLIB:"E:\OSU\CS-271\Project_sample\Debug\Project.lib" /MACHINE:X86 /SAFESEH Debug\main.obj
+     1>main.obj : error LNK2026: module unsafe for SAFESEH image.
+     1>E:\OSU\CS-271\Project_sample\Debug\Project.exe : fatal error LNK1281: Unable to generate SAFESEH image.
+     1>Done Building Project "E:\OSU\CS-271\Project_sample\Project.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.08
