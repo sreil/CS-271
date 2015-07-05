@@ -57,11 +57,6 @@ L1:
 	cmp		eax, number1 ;extra credit
 	jg		L1
 
-;Calculate sum/difference/product/quotient/remainder of the numbers
-;	mov		edx, OFFSET results
-;	call	WriteString
-;	call	CrLf
-
 ;calc the sum
 	mov		eax, number1
 	;mov		ebx, number2
