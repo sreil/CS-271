@@ -30,12 +30,12 @@ goodbye		BYTE	"That was fun! Adios!",0
 .code
 main PROC
 
-;Introduce programmer
+;Introduce me
 	mov		edx, OFFSET	intro
 	call	WriteString
 	call	CrLf	;new line
 
-;Display instructions
+;Instructions
 	mov		edx, OFFSET instruct
 	call	WriteString
 	call	CrLf
@@ -58,50 +58,51 @@ L1:
 	jg		L1
 
 ;Calculate sum/difference/product/quotient/remainder of the numbers
-	mov		edx, OFFSET results
-	call	WriteString
-	call	CrLf
+;	mov		edx, OFFSET results
+;	call	WriteString
+;	call	CrLf
 
-;Sum
+;calc the sum
 	mov		eax, number1
-	mov		ebx, number2
-	add		eax, ebx
+	;mov		ebx, number2
+	add		eax, number2 ;deleted ebx from this line
 	mov		sum, eax
 
-;Sum print
+;print the sum
 	mov		edx, OFFSET sumRes	
 	call	WriteString
 	mov		edx, OFFSET sum
 	call	WriteInt
 	call	CrLf
 
-;Difference
+;calc the difference
 	mov		eax, number1
 	mov		ebx, number2
 	sub		eax, ebx
 	mov		difference, eax
 
-;Difference print
+;print the difference
 	mov		edx, OFFSET	difRes
 	call	WriteString
 	mov		edx, OFFSET difference
 	call	WriteInt
 	call	CrLf
 
-;Product
+;calc product
 	mov		eax, number1 
 	mov		ebx, number2
 	mul		ebx
 	mov		product, eax
 
-;Product print
+;print the product
 	mov		edx, OFFSET prodRes
 	call	WriteString
 	mov		edx, OFFSET product
 	call	WriteInt
 	call	CrLf
 
-;Quotient
+;calc the quotient and remainder
+	
 	mov		eax, number1
 	mov		ebx, number2
 	mov		edx, 0
@@ -109,21 +110,21 @@ L1:
 	mov		quotient, eax
 	mov		remainder, edx
 	
-;Print quotient
+;print quotient
 	mov		edx, OFFSET quoRes
 	call	WriteString
 	mov		edx, OFFSET quotient
 	call	WriteInt
 	call	CrLf
 
-;And remainder
+;print remainder
 	mov		edx, OFFSET remRes
 	call	WriteString
 	mov		edx, OFFSET remainder
 	call	WriteInt
 	call	CrLf
 
-;Print goodbye
+;print goodbye
 	mov		edx, OFFSET goodbye
 	call	WriteString
 	call	CrLf
