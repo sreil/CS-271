@@ -59,8 +59,7 @@ L1:
 
 ;calc the sum
 	mov		eax, number1
-	;mov		ebx, number2
-	add		eax, number2 ;deleted ebx from this line
+	add		eax, number2 
 	mov		sum, eax
 
 ;print the sum
