@@ -26,7 +26,7 @@ fibPrompt		BYTE	"How many Fibonacci terms do you want? ", 0
 error			BYTE	"Out of range. Please enter an integer in [1 .. 46].", 0
 certified		BYTE	"Results certified by Sean Reilly.", 0;
 goodbye			BYTE	"Goodbye, ", 0
-spaces			BYTE	"     ", 0
+spaces			BYTE	"     ", 0 ;for extra credit
 userName		BYTE	33 DUP(0)
 userNum			DWORD	?	
 fibNum			DWORD	?	
@@ -105,7 +105,7 @@ checkUpper: ; check the upper limit
 
 	mov		eax, 1		
 	cmp		eax, userNum
-	jz		endOfTerms	 ; End if asked for one termif asked for 1 number, will display 1
+	jz		endOfDisplay	 ; End if asked for one termif asked for 1 number, will display 1
 
 	mov		eax, 1		 
 	mov		fib2, eax
@@ -115,7 +115,7 @@ checkUpper: ; check the upper limit
 
 	mov		eax, 2
 	cmp		eax, userNum
-	jz		endOfTerms	 ; End if asked for two terms
+	jz		endOfDisplay	 ; End if asked for two terms
 
 	mov		ecx, userNum  
 	dec		ecx			 
@@ -151,7 +151,7 @@ noNewLine:
 	mov		fib2, eax		
 	loop	fibCalc				
 
-endOfTerms: ; Display a parting message that includes the user’s name, and terminate the program.
+endOfDisplay: ; Display a parting message that includes the user’s name, and terminate the program.
 	call	CrLf
 	call	CrLf
 	mov		edx, OFFSET certified
