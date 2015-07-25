@@ -1,6 +1,6 @@
 TITLE Program3		(Program3.asm)
 
-; Program Description:
+; Program Description: Prints x amount of composite numbers 
 ; Author: Sean Reilly
 ; Date Created: 7/23/2015
 ; Last Modification Date: 7/25/2015
@@ -15,7 +15,7 @@ INCLUDE Irvine32.inc
 .data
     intro			BYTE	"Composite Numbers Programmed by Sean Reilly",0
     instruct1		BYTE	"Enter the number of composite numbers you would like to see.",0
-    instruct2		BYTE	"I’ll accept orders for up to 400 composites.",0                      
+    instruct2		BYTE	"I'll accept orders for up to 400 composites.",0                      
     instruct3       BYTE    "Enter the number of composites to display [1 .. 400]: ", 0
 	goodbye         BYTE    "Results certified by Sean Reilly.  Goodbye.", 0
     range		    BYTE    "Out of range. Try Again.", 0
@@ -51,12 +51,11 @@ main PROC
     call    ReadInt
     mov     userValue, eax
     
-    ; validate user input
-    cmp     eax, UPPER
+    cmp     eax, UPPER ;check input to make sure it's not above 400 or below 1
     jg      error
     cmp     eax, LOWER
     jl      error
-    jmp     printNumbers ; if valid jmp
+    jmp     printNumbers 
     
     error:
     mov     edx, OFFSET range
