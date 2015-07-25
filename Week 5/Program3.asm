@@ -20,14 +20,15 @@ INCLUDE Irvine32.inc
 	goodbye         BYTE    "Results certified by Sean Reilly.  Goodbye.", 0
     range		    BYTE    "Out of range. Try Again.", 0
     continue	    BYTE    "Press any key to continue... ", 0
+    ;**EC: only check prime divisors, see below
     divisor         DWORD   2, 3, 5, 7, 0 ;check if prime
     userValue       DWORD   ? 
     testValue       DWORD   4 ; begins at number 4, adjust if needed 
-    countsComp      DWORD   ? ; counter for # of composites printed
-    perLine         DWORD   0 ;
-    paddingsingle   BYTE    "   ", 0 ; padding for single digit
-    paddingdouble   BYTE    "  ", 0  ; padding for double digit
-    paddingtriple   BYTE    " ", 0   ; padding for triple digit
+    countsComp      DWORD   ? 
+    perLine         DWORD   0 
+    padSingle	    BYTE    "   ", 0 ; padding for single digit
+    padDouble	    BYTE    "  ", 0  ; padding for double digit
+    padTriple	    BYTE    " ", 0   ; padding for triple digit
     perPage         DWORD   ?
     
 .code
@@ -92,7 +93,8 @@ main PROC
     jmp     printNumbers
     
     newPage:
-    mov     edx, OFFSET continue
+	;**EC: Display more composites, but show them one page at a time. The user can “Press any key to continue …” to view the next page. 
+    mov     edx, OFFSET continue 
     call    WriteString
     
     keyFind:
@@ -121,7 +123,7 @@ main ENDP
 isComposite PROC
     pushad
     
-    ;check if its 5 or 7
+    ;**EC: only check prime divisors
     mov     eax, testValue
     cmp     eax, 5
     je      complete
@@ -169,17 +171,20 @@ numPadding PROC
     jl      triple
         
     single: 
-    mov     edx, OFFSET paddingsingle
+	;**EC: align the output columns
+    mov     edx, OFFSET padSingle
     call    WriteString
     jmp     endPad
     
     double:
-    mov     edx, OFFSET paddingdouble
+	;**EC: align the output columns
+    mov     edx, OFFSET padDouble
     call    WriteString
     jmp     endPad
     
     triple:
-    mov     edx, OFFSET paddingtriple
+	;**EC: align the output columns
+    mov     edx, OFFSET padTriple
     call    WriteString
     jmp     endPad
     
@@ -188,6 +193,5 @@ numPadding PROC
     ret
 
 numPadding ENDP
-
 
 END main
