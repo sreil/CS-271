@@ -7,8 +7,14 @@ TITLE Program5			(Program5.asm)
 
 INCLUDE Irvine32.inc
 
-; (insert symbol definitions here)
 
+myWriteString	MACRO	buffer
+	push	edx
+	mov		edx, OFFSET buffer
+	call	WriteString
+	pop		edx
+
+	ENDM
 
 .data
 
@@ -30,6 +36,17 @@ main PROC
 	exit		; exit to operating system
 main ENDP
 
-; (insert additional procedures here)
+intro PROC
+
+	myWriteString	instruct ;introduce programmer and set up program
+	call	CrLf
+	myWriteString	instruct2
+	call	CrLf
+	myWriteString	instruct3
+	call	CrLf
+	myWriteString	instruct4
+
+	ret
+intro ENDP
 
 END main
